@@ -10,7 +10,7 @@
 <div align="center">
   <p>
       <!-- <img src="https://img.shields.io/badge/score-100%20%2F%20100-success?style=for-the-badge" /> -->
-      <img src="https://img.shields.io/github/last-commit/alizealebaron/netPractice?style=for-the-badge" />
+      <img src="https://img.shields.io/github/last-commit/alizealebaron/inceptionstyle=for-the-badge" />
   </p>
 </div>
 
