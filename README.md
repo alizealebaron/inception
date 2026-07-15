@@ -27,6 +27,19 @@
 
 **Rendu le :** Non rendu.
 
-## 🦆 Ressources
+## Introduction à Inception
 
+Ce projet a pour objectif d'approfondir nos connaissances en administration système grâce à l'utilisation de Docker. Au cours de ce projet, nous allons virtualiser plusieurs images Docker en les créant sur une nouvelle machine virtuelle personnelle. Ce guide à pour objectif de vous guider pas à pas vers la compréhension et la réalisation de ce projet.
+
+## Sommaire
+
+1. [Introduction à Docker](guide/introduction_docker.md)
+
+## Ressources
+
+- [Qu’est-ce que Docker ? Notre guide complet](https://about.gitlab.com/fr-fr/blog/what-is-docker-comprehensive-guide/)
 - [Commandes Docker essentielles : le guide CLI complet](https://blog.stephane-robert.info/docs/conteneurs/moteurs-conteneurs/docker/cli/)
+
+---
+
+**Contact :** alebaron@student.42lehavre.fr
