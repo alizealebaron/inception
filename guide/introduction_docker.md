@@ -25,8 +25,27 @@ Le **conteneur**, lui, c’est la maison construite à partir de ce plan : un es
 ## Comment fonctionne Docker ?
 
 ![Fonctionnement Docker](image/docker_work.png)
+<div align="center">
+  <p><u>Schéma du fonctionnement de docker (bytebytego.com)</u></p>
+</div>
 
+Il existe 3 composants dans l'achitecture docker: Le **docker client**, le **docker hôte (host)** et le **docker registre (registry)**.
 
+### Docker client
+
+Il s'agit de l'**interface en ligne de commande (CLI)** de Docker, qui permet aux utilisateurs d'interagir avec le Daemon Docker. Cette interface transmet les commandes (comme `docker run`, `docker build`, etc.) au démon, qui gère ensuite la création, l'exécution et la suppression des conteneurs.
+
+### Docker Hôte (Host)
+
+Intéressons-nous maintenant au **Docker Daemon** (`dockerd`). Ce service central agit comme un serveur : il écoute en permanence les requêtes envoyées par la CLI ou l’API, puis les traite pour gérer le cycle de vie des conteneurs (création, exécution, surveillance, suppression). Il assure aussi la gestion des images, des réseaux virtuels et des volumes, trois composants clés de l’écosystème Docker.
+
+### Docker Registre (Registry)
+
+**Docker Registry** sont des espaces de stoages publiques ou privés qui permettent de récupéré des images précises. C'est le cas de **Docker Hub** qui est maintenu et mis à jour par la Docker Inc afin de fournir des images publiques aux utilisateurs.
+
+## Suite du guide
+
+Si vous en avez fini avec cette partie, rendez-vous dans la partie suivante : [Débuter Inception](./installation.md).
 
 ## Ressources
 
