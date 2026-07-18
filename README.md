@@ -34,11 +34,12 @@ Ce projet a pour objectif d'approfondir nos connaissances en administration syst
 ## Sommaire
 
 1. [Introduction à Docker](guide/introduction_docker.md)
+2. [Prérequis pour Inception (VM, Docker)](guide/installation.md)
+3. [Configuration](guide/configuration.md)
 
 ## Ressources
 
-- [Qu’est-ce que Docker ? Notre guide complet](https://about.gitlab.com/fr-fr/blog/what-is-docker-comprehensive-guide/)
-- [Commandes Docker essentielles : le guide CLI complet](https://blog.stephane-robert.info/docs/conteneurs/moteurs-conteneurs/docker/cli/)
+TODO
 
 ---
 

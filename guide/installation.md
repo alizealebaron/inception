@@ -78,13 +78,17 @@ sudo addgroup docker
 
 Ajouter un utilisateur au groupe docker :
 ```bash
-sudo usermod -aG docker <utilisateur>
+sudo usermod -aG docker $USER
 ```
 
 Vous pouvez tester si cela fonctionne en relançant l'image hello world avec la commande sans le sudo cette fois-ci :
 ```bash
 docker run hello-world
 ```
+
+## Suite du guide
+
+Si vous en avez fini avec cette partie, rendez-vous dans la partie suivante : [Mise en place du conteneur](./configuration.md).
 
 ## Ressources
 
