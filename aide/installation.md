@@ -86,10 +86,6 @@ Vous pouvez tester si cela fonctionne en relançant l'image hello world avec la 
 docker run hello-world
 ```
 
-## Suite du guide
-
-Si vous en avez fini avec cette partie, rendez-vous dans la partie suivante : [Mise en place du conteneur](./configuration.md).
-
 ## Ressources
 
 - [Comment installer Ubuntu dans Virtualbox](https://www.numetopia.fr/comment-installer-ubuntu-dans-virtualbox/)

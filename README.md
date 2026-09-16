@@ -35,11 +35,29 @@ Ce projet a pour objectif d'approfondir nos connaissances en administration syst
 
 1. [Introduction à Docker](guide/introduction_docker.md)
 2. [Prérequis pour Inception (VM, Docker)](guide/installation.md)
-3. [Configuration](guide/configuration.md)
+
+
 
 ## Ressources
 
-TODO
+### Installation 
+
+- [Comment installer Ubuntu dans Virtualbox](https://www.numetopia.fr/comment-installer-ubuntu-dans-virtualbox/)
+- [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+
+### Introduction à Docker
+
+#### Blog
+
+- [Qu’est-ce que Docker ? Notre guide complet](https://about.gitlab.com/fr-fr/blog/what-is-docker-comprehensive-guide/)
+- [Qu’est-ce que Docker ?](https://www.ibm.com/fr-fr/think/topics/docker#:~:text=Docker%20est%20une%20plateforme%20open,jour%20et%20g%C3%A9rer%20des%20conteneurs.)
+- [Docker : qu’est-ce que c’est et comment l’utiliser ?](https://liora.io/docker-guide-complet)
+- [Image Docker vs conteneur : explication des principales différences](https://www.hostinger.com/fr/tutoriels/image-docker-vs-conteneur/)
+- [Commandes Docker essentielles : le guide CLI complet](https://blog.stephane-robert.info/docs/conteneurs/moteurs-conteneurs/docker/cli/)
+
+#### Autres Inception
+
+- [Inception d'Azedineouhadou](https://github.com/azedineouhadou/inception-42#description)
 
 ---
 

@@ -43,7 +43,7 @@ Intéressons-nous maintenant au **Docker Daemon** (`dockerd`). Ce service centra
 
 **Docker Registry** sont des espaces de stoages publiques ou privés qui permettent de récupéré des images précises. C'est le cas de **Docker Hub** qui est maintenu et mis à jour par la Docker Inc afin de fournir des images publiques aux utilisateurs.
 
-## Suite du guide
+## Suite de l'aide
 
 Si vous en avez fini avec cette partie, rendez-vous dans la partie suivante : [Débuter Inception](./installation.md).
 
