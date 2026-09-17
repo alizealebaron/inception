@@ -41,4 +41,18 @@ docker run <nom_image>
 Démarrer une image et avoir accès à son terminal:
 ```bash
 docker run -it <nom_image>
+```
+
+### Arrêter / Détruire un container Docker
+
+Arrêter un container docker: 
+```bash
+docker stop <nom_ou_id>
+```
+
+Détruire un container :
+```bash
+docker rm <nom_ou_id>
+```
+
 

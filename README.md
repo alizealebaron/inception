@@ -55,7 +55,13 @@ Ce projet a pour objectif d'approfondir nos connaissances en administration syst
 - [Image Docker vs conteneur : explication des principales différences](https://www.hostinger.com/fr/tutoriels/image-docker-vs-conteneur/)
 - [Commandes Docker essentielles : le guide CLI complet](https://blog.stephane-robert.info/docs/conteneurs/moteurs-conteneurs/docker/cli/)
 
-#### Autres Inception
+### Configurer les Dockerfile
+
+- [Inception Tips](https://inception.cluzet.fr/)
+- [Dockerfile reference](https://docs.docker.com/reference/dockerfile/)
+
+
+### Autres Inception
 
 - [Inception d'Azedineouhadou](https://github.com/azedineouhadou/inception-42#description)
 
