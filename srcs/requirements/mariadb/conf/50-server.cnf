@@ -1,3 +1,7 @@
+# this is read by the standalone daemon and embedded servers
+[server]
+
+# this is only for the mysqld standalone daemon
 [mysqld]
 user = mysql
 port = 3306

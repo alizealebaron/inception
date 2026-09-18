@@ -19,9 +19,8 @@ RUN mkdir -p /var/run/nginx
 # Copier la configuration nginx dans l'image
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
-# Configuration pour l'internet
-RUN chmod 755 /var/www/html
-RUN chown -R www-data:www-data /var/www/html
+# Mise en place du port
+EXPOSE	443
 
 # Démarrer nginx avec daemon off pour rester en arrière plan
 CMD [ "nginx", "-g", "daemon off;" ]

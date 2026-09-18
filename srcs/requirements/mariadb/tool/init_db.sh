@@ -22,4 +22,4 @@ if [ ! -d "/var/lib/mysql/${SQL_DATABASE}" ]; then
 fi
 
 # mysqld devient le PID 1, tourne au premier plan, reçoit les signaux
-exec mysqld
+exec mysqld --user=mysql
