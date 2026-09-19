@@ -13,9 +13,9 @@ RUN curl -fsSL -o /usr/local/bin/wp \
       https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
     chmod +x /usr/local/bin/wp
 
-# COPY conf/www.conf   /etc/php/8.2/fpm/pool.d/www.conf
-# COPY tools/init.sh   /usr/local/bin/init.sh
-# RUN chmod +x         /usr/local/bin/init.sh
+COPY conf/www.conf   /etc/php/8.2/fpm/pool.d/www.conf
+COPY tools/init_wp.sh   /usr/local/bin/init_wp.sh
+RUN chmod +x         /usr/local/bin/init_wp.sh
 
-# EXPOSE 9000
-# CMD ["/usr/local/bin/init.sh"]
+EXPOSE 9000
+CMD ["/usr/local/bin/init_wp.sh"]
