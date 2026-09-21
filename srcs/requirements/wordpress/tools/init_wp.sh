@@ -1,4 +1,6 @@
 #!/bin/bash
+
+cd /var/www/wordpress
 set -e
 
 DB_PASSWORD=$(cat /run/secrets/db_password)

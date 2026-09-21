@@ -1,6 +1,10 @@
 # Avant-dernière version stable de Debian
 FROM debian:bookworm
 
+# Création et exécution des commandes dans le bon dossier
+RUN mkdir -p /var/www/wordpress
+WORKDIR /var/www/wordpress
+
 # Installation des packages importants 
 #   Note : rm -rf pour nettoyer le cache d'installation et éviter de prendre de la place pour rien
 RUN apt-get update && \
