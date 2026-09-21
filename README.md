@@ -42,9 +42,9 @@ Inception est un projet de système d'administration dont l'objectif est de mett
 
 L'infrastructure déployée est un classique **LEMP** (Linux, nginx, MariaDB, PHP) servant un site **WordPress** :
 
-- **nginx** — le point d'entrée unique de l'infrastructure, exposé uniquement sur le port 443, servant du HTTPS (TLSv1.2/TLSv1.3) et redirigeant les requêtes PHP vers le conteneur WordPress via FastCGI.
-- **WordPress + php-fpm** — le cœur WordPress et le processus PHP-FPM qui traite les requêtes PHP dynamiques, installé et configuré via `wp-cli` au démarrage du conteneur.
-- **MariaDB** — le moteur de base de données stockant les données de WordPress, initialisé au premier démarrage avec une base dédiée et un utilisateur applicatif.
+- **nginx** - le point d'entrée unique de l'infrastructure, exposé uniquement sur le port 443, servant du HTTPS (TLSv1.2/TLSv1.3) et redirigeant les requêtes PHP vers le conteneur WordPress via FastCGI.
+- **WordPress + php-fpm** - le cœur WordPress et le processus PHP-FPM qui traite les requêtes PHP dynamiques, installé et configuré via `wp-cli` au démarrage du conteneur.
+- **MariaDB** - le moteur de base de données stockant les données de WordPress, initialisé au premier démarrage avec une base dédiée et un utilisateur applicatif.
 
 Chaque service est construit à partir de son **propre Dockerfile**, basé sur `debian:bookworm` (l'avant-dernière version stable de Debian), et aucune image toute faite issue de Docker Hub n'est utilisée en dehors de l'image de base Debian elle-même.
 
@@ -64,7 +64,7 @@ Puis rends-toi sur `https://alebaron.42.fr` (après avoir configuré `/etc/hosts
 
 **Machine Virtuelle vs Docker**
 
-Une VM classique virtualise un système d'exploitation entier (son propre noyau, ses pilotes, son init) au-dessus d'un hyperviseur, ce qui la rend lourde à démarrer et difficile à reproduire à l'identique. Les conteneurs Docker, eux, partagent le noyau de la machine hôte et n'isolent que l'espace utilisateur (processus, système de fichiers, réseau), ce qui les rend bien plus légers, rapides à démarrer et reproductibles — idéal pour séparer proprement nginx, PHP et la base de données en trois unités indépendantes, jetables et facilement reconstructibles. Ce projet tourne **à l'intérieur** d'une VM uniquement parce que le sujet de l'école l'impose, mais Docker en lui-même n'a pas besoin d'une VM pour fonctionner.
+Une VM classique virtualise un système d'exploitation entier (son propre noyau, ses pilotes, son init) au-dessus d'un hyperviseur, ce qui la rend lourde à démarrer et difficile à reproduire à l'identique. Les conteneurs Docker, eux, partagent le noyau de la machine hôte et n'isolent que l'espace utilisateur (processus, système de fichiers, réseau), ce qui les rend bien plus légers, rapides à démarrer et reproductibles - idéal pour séparer proprement nginx, PHP et la base de données en trois unités indépendantes, jetables et facilement reconstructibles. Ce projet tourne **à l'intérieur** d'une VM uniquement parce que le sujet de l'école l'impose, mais Docker en lui-même n'a pas besoin d'une VM pour fonctionner.
 
 **Secrets vs Variables d'environnement**
 
@@ -73,7 +73,7 @@ réglages non sensibles, et des secrets Docker (`db_password.txt`, `db_root_pass
 
 **Réseau Docker vs Réseau Host**
 
-`network: host` fait partager directement au conteneur la pile réseau de la machine hôte — aucune isolation, pas de résolution DNS interne, et une surface d'attaque bien plus grande (chaque port du conteneur devient un port de l'hôte). Un réseau Docker dédié de type **bridge**, comme utilisé ici (`inception_network`), isole les conteneurs du réseau de l'hôte, n'expose que les ports explicitement publiés (443 pour nginx), et fournit une résolution DNS automatique entre services par leur nom (par exemple `wordpress` se résout vers l'IP du conteneur WordPress) — c'est ce qui permet à nginx de joindre `wordpress:9000` et à WordPress de joindre `mariadb:3306`.
+`network: host` fait partager directement au conteneur la pile réseau de la machine hôte - aucune isolation, pas de résolution DNS interne, et une surface d'attaque bien plus grande (chaque port du conteneur devient un port de l'hôte). Un réseau Docker dédié de type **bridge**, comme utilisé ici (`inception_network`), isole les conteneurs du réseau de l'hôte, n'expose que les ports explicitement publiés (443 pour nginx), et fournit une résolution DNS automatique entre services par leur nom (par exemple `wordpress` se résout vers l'IP du conteneur WordPress) - c'est ce qui permet à nginx de joindre `wordpress:9000` et à WordPress de joindre `mariadb:3306`.
 
 **Volumes Docker vs Bind Mounts**
 

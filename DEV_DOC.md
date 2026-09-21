@@ -29,9 +29,9 @@ This document explains how to set up, build, and maintain the Inception project 
 ```
 
 Each service directory contains:
-- `Dockerfile` — builds the service's image.
-- `conf/` — configuration files copied into the image at build time.
-- `tools/` — the entrypoint script run at container startup.
+- `Dockerfile` - builds the service's image.
+- `conf/` - configuration files copied into the image at build time.
+- `tools/` - the entrypoint script run at container startup.
 
 ## 3. Setting up the environment from scratch
 
@@ -92,8 +92,8 @@ docker compose -f srcs/docker-compose.yml config
 
 The database and WordPress files are stored in two **named Docker volumes** (`db_volume`, `wp_volume`), each configured with the `local` driver's bind `driver_opts` so that, in addition to being real Docker-managed volumes (visible in `docker volume ls`), their actual data lives on the host filesystem at:
 
-- `/home/<login>/data/db` — MariaDB's datadir (`/var/lib/mysql` inside the `mariadb` container)
-- `/home/<login>/data/wordpress` — WordPress' files (`/var/www/wordpress` inside both the `wordpress` and `nginx` containers, which share this same volume so nginx can serve the files WordPress/php-fpm writes)
+- `/home/<login>/data/db` - MariaDB's datadir (`/var/lib/mysql` inside the `mariadb` container)
+- `/home/<login>/data/wordpress` - WordPress' files (`/var/www/wordpress` inside both the `wordpress` and `nginx` containers, which share this same volume so nginx can serve the files WordPress/php-fpm writes)
 
 This data **survives** `make down`, `make clean`, and container restarts or crashes (thanks to `restart: always` in the compose file). It is only deleted by `make fclean`, which explicitly removes `/home/<login>/data`.
 
@@ -101,6 +101,6 @@ Both `mariadb` and `wordpress` entrypoint scripts (`init_db.sh`, `init_wp.sh`) c
 
 ## 7. Debugging tips
 
-- A `502 Bad Gateway` from nginx usually means php-fpm isn't reachable on `wordpress:9000` — check `docker logs wordpress` for a crash during startup, and confirm php-fpm's pool config (`listen = 9000`, i.e. all interfaces, not `127.0.0.1:9000`).
-- A blank/empty site or "directory index... is forbidden" from nginx usually means the `wp_volume` is empty — check that WordPress was actually downloaded/installed into `/var/www/wordpress` (the working directory matters here: the Dockerfile sets `WORKDIR /var/www/wordpress` precisely so `wp-cli` operates in the right place).
-- A MariaDB authentication error (`Host '...' is not allowed to connect`) usually means the application database user was never created — check `init_db.sh`'s environment variable names against what's actually defined in `.env`, and remember that a stale/partially-initialized `db_volume` will make the script skip re-creating the user on the next boot (see the first-boot check in section 6).
+- A `502 Bad Gateway` from nginx usually means php-fpm isn't reachable on `wordpress:9000` - check `docker logs wordpress` for a crash during startup, and confirm php-fpm's pool config (`listen = 9000`, i.e. all interfaces, not `127.0.0.1:9000`).
+- A blank/empty site or "directory index... is forbidden" from nginx usually means the `wp_volume` is empty - check that WordPress was actually downloaded/installed into `/var/www/wordpress` (the working directory matters here: the Dockerfile sets `WORKDIR /var/www/wordpress` precisely so `wp-cli` operates in the right place).
+- A MariaDB authentication error (`Host '...' is not allowed to connect`) usually means the application database user was never created - check `init_db.sh`'s environment variable names against what's actually defined in `.env`, and remember that a stale/partially-initialized `db_volume` will make the script skip re-creating the user on the next boot (see the first-boot check in section 6).

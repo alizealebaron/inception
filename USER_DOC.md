@@ -1,6 +1,6 @@
 # User Documentation
 
-This document is for anyone who wants to **use** the Inception stack: browse the website, log into the admin panel, or check that everything is running — no development knowledge required.
+This document is for anyone who wants to **use** the Inception stack: browse the website, log into the admin panel, or check that everything is running - no development knowledge required.
 
 ## 1. What services does this stack provide?
 
@@ -65,16 +65,16 @@ Then, in your browser:
 - **Website**: `https://alebaron.42.fr`
 - **Admin panel**: `https://alebaron.42.fr/wp-admin`
 
-Your browser will show a security warning ("Your connection is not private") the first time you visit — this is expected, because the site uses a **self-signed** TLS certificate (there is no public certificate authority involved, as this is a local/school project). Click "Advanced" → "Proceed anyway" (wording varies by browser).
+Your browser will show a security warning ("Your connection is not private") the first time you visit - this is expected, because the site uses a **self-signed** TLS certificate (there is no public certificate authority involved, as this is a local/school project). Click "Advanced" → "Proceed anyway" (wording varies by browser).
 
 ## 4. Locating and managing credentials
 
 - Non-sensitive settings (domain name, database name, WordPress title...) live in `srcs/.env`.
-- Passwords live as plain text files inside the `secrets/` folder at the project's root: - `secrets/db_root_password.txt` — MariaDB root password - `secrets/db_password.txt` — password of the WordPress database user - `secrets/credentials.txt` — WordPress admin and regular-user passwords   (format `KEY=VALUE`, one per line)
+- Passwords live as plain text files inside the `secrets/` folder at the project's root: - `secrets/db_root_password.txt` - MariaDB root password - `secrets/db_password.txt` - password of the WordPress database user - `secrets/credentials.txt` - WordPress admin and regular-user passwords   (format `KEY=VALUE`, one per line)
 
 The WordPress **admin username** is defined by `WP_ADMIN_USER` in `srcs/.env`, and its password is the `WP_ADMIN_PASSWORD` line in `secrets/credentials.txt`. A second, non-admin WordPress user is also created, using `WP_USER` / `WP_USER_EMAIL` from `.env` and `WP_USER_PASSWORD` from `secrets/credentials.txt`.
 
-⚠️ These files are intentionally excluded from Git (see `.gitignore`) — never commit them.
+⚠️ These files are intentionally excluded from Git (see `.gitignore`) - never commit them.
 
 ## 5. Checking that the services are running correctly
 
