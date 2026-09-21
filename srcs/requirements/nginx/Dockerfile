@@ -2,10 +2,10 @@
 FROM debian:bookworm
 
 # Installation des packages importants
-RUN apt update -y
-RUN apt upgrade -y
-RUN apt install nginx -y
-RUN apt install openssl -y
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends nginx openssl && \
+    rm -rf /var/lib/apt/lists/*
 
 # Création d'un fichier de stockage de la clef SSL/TSL
 RUN mkdir -p /etc/nginx/ssl

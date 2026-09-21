@@ -1,32 +1,51 @@
-#!/bin/sh
+#!/bin/bash
+set -e
 
-until mysqladmin ping -h mariadb -u root -p${MYSQL_ROOT_PASSWORD} --silent; do
-    echo "MariaDB not found"
+DB_PASSWORD=$(cat /run/secrets/db_password)
+WP_ADMIN_PASSWORD=$(grep WP_ADMIN_PASSWORD /run/secrets/credentials | cut -d '=' -f2)
+WP_USER_PASSWORD=$(grep WP_USER_PASSWORD /run/secrets/credentials | cut -d '=' -f2)
+
+# On attend que MariaDB soit prêt à accepter des connexions.
+#    Sans cette attente active, l'installation WordPress échouerait.
+
+echo "[init_wp] En attente de MariaDB..."
+until mysqladmin ping -h "mariadb" --silent; do
     sleep 1
 done
+echo "[init_wp] MariaDB est prêt."
 
-wp core download --allow-root --path=/var/www/wordpress
+# Installation, uniquement si WordPress n'est pas déjà installé
+#   (cas d'un redémarrage de conteneur : le volume persiste déjà tout)
+if [ ! -f "/var/www/wordpress/wp-config.php" ]; then
+    echo "[init_wp] Téléchargement du cœur de WordPress..."
+    wp core download --allow-root
 
-wp config create --dbname=${MYSQL_DATABASE} \
-                 --dbuser=${MYSQL_USER} \
-                 --dbpass=${MYSQL_PASSWORD} \
-                 --dbhost=${MYSQL_HOSTNAME} \
-                 --allow-root \
-                 --path=/var/www/wordpress
+    echo "[init_wp] Génération de wp-config.php..."
+    wp config create \
+        --dbname="${MYSQL_DATABASE}" \
+        --dbuser="${MYSQL_USER}" \
+        --dbpass="${DB_PASSWORD}" \
+        --dbhost="mariadb" \
+        --allow-root
 
-wp core install --url=${DOMAIN_NAME} \
-                --title=${WORDPRESS_TITLE} \
-                --admin_user=${WORDPRESS_ADMIN_USER} \
-                --admin_password=${WORDPRESS_ADMIN_PASSWORD} \
-                --admin_email=${WORDPRESS_ADMIN_EMAIL} \
-                --allow-root \
-                --path=/var/www/wordpress
+    echo "[init_wp] Installation de WordPress..."
+    wp core install \
+        --url="${DOMAIN_NAME}" \
+        --title="${WP_TITLE}" \
+        --admin_user="${WP_ADMIN_USER}" \
+        --admin_password="${WP_ADMIN_PASSWORD}" \
+        --admin_email="${WP_ADMIN_EMAIL}" \
+        --allow-root
 
-wp user create ${USER2} \
-               ${USER2_EMAIL} \
-               --user_pass=${PASSWORD2} \
-               --allow-root \
-               --path=/var/www/wordpress \
-               --role=author
+    echo "[init_wp] Création du second utilisateur (non-admin)..."
+    wp user create \
+        "${WP_USER}" "${WP_USER_EMAIL}" \
+        --role=author \
+        --user_pass="${WP_USER_PASSWORD}" \
+        --allow-root
 
+    chown -R www-data:www-data /var/www/wordpress
+fi
+
+echo "[init_wp] Démarrage de php-fpm en foreground..."
 exec php-fpm8.2 -F
