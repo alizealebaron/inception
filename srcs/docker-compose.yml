@@ -51,6 +51,17 @@ services:
       - wordpress
     restart: always
 
+  static-site:
+    build:
+      context: ./requirements/bonus/static-site
+    image: static-site
+    container_name: static-site
+    ports:
+      - "8080:8080"
+    networks:
+      - inception_network
+    restart: always
+
 networks:
   inception_network:
     driver: bridge

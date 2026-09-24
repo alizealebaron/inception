@@ -1,0 +1,35 @@
+html, body {
+    margin: 0;
+    background-color: #000000;
+    color: rgb(243, 243, 243);
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin: 0;
+}
+
+.container {
+    padding: 1%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.img_pkm {
+    width: 300px;
+    height: 300px;
+}
+
+.pokemon {
+    background-color: rgb(41, 41, 41);
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+}
