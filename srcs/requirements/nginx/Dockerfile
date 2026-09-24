@@ -20,7 +20,7 @@ RUN mkdir -p /var/run/nginx
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 # Mise en place du port
-EXPOSE	443
+EXPOSE 443
 
 # Démarrer nginx avec daemon off pour rester en arrière plan
 CMD [ "nginx", "-g", "daemon off;" ]
