@@ -8,10 +8,6 @@ set -e
 DB_PASSWORD=$(cat /run/secrets/db_password)
 WP_ADMIN_PASSWORD=$(grep WP_ADMIN_PASSWORD /run/secrets/credentials | cut -d '=' -f2)
 WP_USER_PASSWORD=$(grep WP_USER_PASSWORD /run/secrets/credentials | cut -d '=' -f2)
-WP_ADMIN_USER=$(grep WP_ADMIN_USER /run/secrets/wp_user | cut -d '=' -f2)
-WP_ADMIN_EMAIL=$(grep WP_ADMIN_EMAIL /run/secrets/wp_user | cut -d '=' -f2)
-WP_USER=$(grep WP_USER /run/secrets/wp_user | cut -d '=' -f2)
-WP_USER_EMAIL=$(grep WP_USER_EMAIL /run/secrets/wp_user | cut -d '=' -f2)
 
 # On attend que MariaDB soit prêt à accepter des connexions.
 #    Sans cette attente active, l'installation WordPress échouerait.
