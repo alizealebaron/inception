@@ -5,7 +5,7 @@ DB_PASSWORD=$(cat /run/secrets/db_password)
 DB_ROOT_PASSWORD=$(cat /run/secrets/db_root_password)
 
 # Si la base "wordpress" n'existe pas encore, c'est le tout premier démarrage : on fait l'initialisation complète une seule fois.
-# Permet de gérer les cas de redémarrage comme demandé dans le sujet
+# Permet de gérer les cas de redémarrage
 if [ ! -d "/var/lib/mysql/${MYSQL_DATABASE}" ]; then
 
     mysqld_safe --datadir=/var/lib/mysql &
@@ -15,6 +15,7 @@ if [ ! -d "/var/lib/mysql/${MYSQL_DATABASE}" ]; then
         sleep 1
     done
 
+    # Création de tous les éléments de la BDD
     mysql -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;"
     mysql -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}';"
     mysql -e "GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'%';"

@@ -22,4 +22,4 @@ COPY tools/init_wp.sh   /usr/local/bin/init_wp.sh
 RUN chmod +x         /usr/local/bin/init_wp.sh
 
 EXPOSE 9000
-CMD ["/usr/local/bin/init_wp.sh"]
+ENTRYPOINT ["/usr/local/bin/init_wp.sh"]
