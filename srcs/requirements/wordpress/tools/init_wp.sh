@@ -3,8 +3,6 @@
 cd /var/www/wordpress
 set -e
 
-# Récupération de données
-
 DB_PASSWORD=$(cat /run/secrets/db_password)
 WP_ADMIN_PASSWORD=$(grep WP_ADMIN_PASSWORD /run/secrets/credentials | cut -d '=' -f2)
 WP_USER_PASSWORD=$(grep WP_USER_PASSWORD /run/secrets/credentials | cut -d '=' -f2)
