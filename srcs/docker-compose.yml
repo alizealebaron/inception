@@ -10,6 +10,7 @@ services:
     secrets:
       - db_password
       - db_root_password
+      - db_user
     volumes:
       - db_volume:/var/lib/mysql
     networks:
@@ -26,6 +27,7 @@ services:
     secrets:
       - db_password
       - credentials
+      - wp_user
     volumes:
       - wp_volume:/var/www/wordpress
     networks:
@@ -87,3 +89,7 @@ secrets:
     file: ../secrets/db_root_password.txt
   credentials:
     file: ../secrets/credentials.txt
+  wp_user:
+    file: ../secrets/wp_user.txt
+  db_user:
+    file: ../secrets/db_user.txt

@@ -3,6 +3,7 @@ set -e
 
 DB_PASSWORD=$(cat /run/secrets/db_password)
 DB_ROOT_PASSWORD=$(cat /run/secrets/db_root_password)
+MYSQL_USER=$(cat /run/secrets/db_user)
 
 # Si la base "wordpress" n'existe pas encore, c'est le tout premier démarrage : on fait l'initialisation complète une seule fois.
 # Permet de gérer les cas de redémarrage comme demandé dans le sujet
