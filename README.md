@@ -9,7 +9,7 @@
 
 <div align="center">
   <p>
-      <!-- <img src="https://img.shields.io/badge/score-100%20%2F%20100-success?style=for-the-badge" /> -->
+      <img src="https://img.shields.io/badge/score-105%20%2F%20100-success?style=for-the-badge" />
       <img src="https://img.shields.io/github/last-commit/alizealebaron/inception?style=for-the-badge" />
   </p>
 </div>
@@ -25,7 +25,7 @@
 
 **Commencé le :** 15/07/2026
 
-**Rendu le :** Non rendu.
+**Rendu le :** 25/09/2026
 
 ## Introduction à Inception
 
